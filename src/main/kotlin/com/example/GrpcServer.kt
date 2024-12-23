@@ -1,5 +1,6 @@
 package com.example
 
+import com.example.service.HelloWorldService
 import io.grpc.Server
 import io.grpc.ServerBuilder
 import io.grpc.protobuf.services.ProtoReflectionService
@@ -30,16 +31,5 @@ class HelloWorldServer(private val port: Int) {
 
     fun blockUntilShutdown() {
         server.awaitTermination()
-    }
-
-    internal class HelloWorldService : GreeterGrpcKt.GreeterCoroutineImplBase() {
-        override suspend fun sayHello(request: HelloRequest) =
-            helloReply {
-                message = "Hello ${request.name}"
-            }
-
-        override suspend fun sayHelloAgain(request: HelloRequest) = helloReply {
-            message = "Hello again ${request.name}"
-        }
     }
 }
