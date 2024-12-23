@@ -5,6 +5,7 @@ val logback_version: String by project
 val grpc_kotlin: String by project
 val grpc_version : String by project
 val protobuf_version : String by project
+val koin_version: String by project
 
 plugins {
     kotlin("jvm") version "2.1.0"
@@ -46,6 +47,9 @@ dependencies {
     // protobuf
     implementation("com.google.protobuf:protobuf-kotlin:$protobuf_version") // https://mvnrepository.com/artifact/com.google.protobuf/protobuf-kotlin
 
+    // koin
+    implementation(project.dependencies.platform("io.insert-koin:koin-bom:$koin_version"))
+    implementation("io.insert-koin:koin-core")
 }
 
 protobuf {

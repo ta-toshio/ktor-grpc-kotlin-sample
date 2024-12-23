@@ -79,6 +79,9 @@ fun main(args: Array<String>) {
 
 fun Application.module() {
     println("hello world")
+
+    di()
+
     configureRouting()
 
     val port = System.getenv("PORT")?.toInt() ?: 50051
